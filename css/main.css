@@ -1,0 +1,69 @@
+body {
+  background: #517293;
+  font-size: 100%;
+  line-height: 1.6;
+  color: #f1f1f1;
+}
+
+@media (min-width: 30em) {
+  body {
+    background: #435f7a;
+    font-size: 120%;
+  }
+}
+
+@media (min-width: 50em) {
+  body {
+    background: #364c62;
+    font-size: 140%;
+  }
+}
+
+section {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+section h1 {
+  text-shadow: 1px 1px #000;
+}
+
+@media (min-width: 30em) {
+  section h1 {
+    text-shadow: 3px 3px 2px #000;
+  }
+}
+
+@media (min-width: 30em) {
+  .breaking-mobile {
+    display: none;
+  }
+}
+
+.breaking-medium {
+  display: none;
+}
+
+@media (min-width: 30em) {
+  .breaking-medium {
+    display: block;
+  }
+}
+
+@media (min-width: 50em) {
+  .breaking-medium {
+    display: none;
+  }
+}
+
+.breaking-large {
+  display: none;
+}
+
+@media (min-width: 50em) {
+  .breaking-large {
+    display: block;
+  }
+}
+/*# sourceMappingURL=main.css.map */

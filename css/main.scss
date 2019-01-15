@@ -1,0 +1,69 @@
+// Sass Breakpoint Mixin
+@mixin breakpoint($point) {
+    @if $point == medium {
+        @media (min-width: 30em)  { @content; }
+    }
+    @else if $point == large {
+        @media (min-width: 50em) { @content; }
+    }
+    @else if $point { // allows custom breakpoints
+        @media (min-width: $point) { @content; }
+    }
+}
+
+
+// demo styling & examples
+body {
+    background: #517293;
+    font-size: 100%;
+    line-height: 1.6;
+    color: #f1f1f1;
+
+    @include breakpoint(medium) {
+        background: darken(#517293, 7.5%);
+        font-size: 120%;
+    }
+    @include breakpoint(large) {
+        background: darken(#517293, 15%);
+        font-size: 140%;  
+    }
+}
+
+section {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1em;
+    h1 {
+        text-shadow: 1px 1px #000;
+    
+        @include breakpoint(medium) {
+            text-shadow: 3px 3px 2px #000;
+        }
+    }
+}
+
+.breaking-mobile {
+ 
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+
+.breaking-medium {
+    display: none;
+  
+    @include breakpoint(medium) {
+        display: block;
+    }
+    @include breakpoint(large) {
+        display: none;
+    }
+}
+
+.breaking-large {
+    display: none;
+  
+    @include breakpoint(large) {
+        display: block;
+    }
+}
