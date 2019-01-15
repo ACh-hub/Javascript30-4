@@ -1,0 +1,13 @@
+// Saas variables, no plans to use them with js
+$color-navy:#2C3E50;
+$color-blue:#2980B9;
+$color-light-blue:#3498DB;
+$color-red:#E74C3C;
+$color-cream:#ECF0F1;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
+
+@mixin font-roboto($thickness){
+    font-family: 'Roboto',sans-serif;
+    font-weight: $thickness;
+}
