@@ -33,35 +33,14 @@ inventorsMapped.forEach(inventor=>{
 inventors1500 = inventors.filter(inventor => (inventor.year>=1500 && inventor.year<1600));
 
 const fifteensDiv = document.getElementById('fifteens');
-const fifteensTable = fifteensDiv.appendChild(document.createElement("table"));
-const name = document.createElement('th');
-name.appendChild(document.createTextNode("Name"));
-const birth = document.createElement('th');
-birth.appendChild(document.createTextNode("Year of birth"));
-const death = document.createElement('th');
-death.appendChild(document.createTextNode("Year of death"));
-const headerRow= fifteensTable.appendChild(document.createElement('tr'));
-headerRow.appendChild(name);
-headerRow.appendChild(birth);
-headerRow.appendChild(death);
-
-inventors1500.forEach(inventor=>{
-    let row= fifteensTable.appendChild(document.createElement('tr'));
-    let name = document.createElement('td');
-    name.appendChild(document.createTextNode(`${inventor.first} ${inventor.last}`));
-    let birth = document.createElement('td')
-    birth.appendChild(document.createTextNode(`${inventor.year}`));
-    let death = document.createElement('td');
-    death.appendChild(document.createTextNode(`${inventor.passed}`));
-    row.appendChild(name);
-    row.appendChild(birth);
-    row.appendChild(death);
-});
-
-
+fifteensDiv.appendChild(createTable(inventors1500));
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+inventorsSorted = inventors.sort((first,last)=>{return first.year -last.year});
+
+const sortedDiv = document.getElementById('sorted');
+sortedDiv.appendChild(createTable(inventorsSorted));
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
@@ -79,3 +58,28 @@ inventors1500.forEach(inventor=>{
 // Sum up the instances of each of these
 
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+
+function createTable(arr){
+    // assuming all the elements of the array being same type (having same keys)
+    // first objects keys will be column headers
+
+    const table = document.createElement('table');
+    const tableHeader = table.insertRow(0);
+    
+    for(let key in arr[0]) {
+        let cell = tableHeader.insertCell();
+        cell.innerHTML = key;
+    }
+
+    arr.forEach(el => {
+        let row = table.insertRow();
+        for(let key in el) {
+            let cell = row.insertCell();
+            cell.innerHTML = el[key];
+        }
+    });
+        console.log(Object.keys(arr[0]));
+
+        return table;
+}
