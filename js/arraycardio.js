@@ -110,11 +110,30 @@ peopleSorted.forEach(person=>{
 
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+const dataReducedDiv = document.createElement('div');
+dataReducedDiv.classList.add('data');
+dataReducedDiv.id ='data-reduced';
+dashboard.appendChild(dataReducedDiv);
+
+const dataReduced = data.reduce((obj, item)=>{
+    if (!obj[item]) {
+        obj[item] = 0;
+    }
+    obj[item]++;
+    return obj;
+}, {});
+
+for(key in dataReduced){
+    let spanElement = document.createElement("span");
+    let textNode = document.createTextNode(`${key}: ${dataReduced[key]}`);
+    spanElement.appendChild(textNode);
+    dataReducedDiv.appendChild(spanElement);
+}
 
 function createTable(arr){
     // assuming all the elements of the array being same type (having same keys)
     // first objects keys will be column headers
-
+    
     const table = document.createElement('table');
     const tableHeader = table.insertRow(0);
     
@@ -122,7 +141,7 @@ function createTable(arr){
         let cell = tableHeader.insertCell();
         cell.innerHTML = key;
     }
-
+    
     arr.forEach(el => {
         let row = table.insertRow();
         for(let key in el) {
@@ -131,5 +150,5 @@ function createTable(arr){
         }
     });
     
-        return table;
+    return table;
 }
